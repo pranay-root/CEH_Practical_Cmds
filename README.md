@@ -103,6 +103,8 @@ Hash cracking:
 ```
 john -w=/usr/share/wordlists/rockyou.txt hash.txt
 hashcat -m 0 hashvalue /usr/share/wordlists/rockyou.txt
+hashcat -a 3 -m <hash_type> <hash_file> ?a?a?a?a?a?a?a?a #(direct bruteforce)
+
 ```
 
 FTP server:
@@ -197,4 +199,17 @@ Crack the handshake:
 sudo aircrack-ng -w wordlist.txt -b [BSSID] outputfile.cap 
 aircrack-ng outputfile.cap #(Identify Handshake or get bssid)
 aircrack-ng -w wordlist.txt outputfile.cap #(direct crack)
+```
+Hydra all brute force commands:
+--------------------------------------------------------------------------------------------
+```
+note "-P" capital for passwordlists if it is only single password use small "-p"
+hydra -l <username> -P <passwords_file> <target_ip> ssh
+hydra -l <username> -P <passwords_file> <target_ip> ftp
+hydra -l <username> -P <passwords_file> <target_ip> mysql
+hydra -l <username> -p <password> <ip> <service> -s <port>
+hydra -C <combinations.txt> <ip> <service>
+hydra -l <username> -P <passwords_file> <target_url> http-post-form "<post_data>:<failure_string>" #(post form)
+hydra -l <username> -P <passwords_file> <target_url> http-get #(get request login)
+hydra -l <username> -P <passwords_file> <target_url> http-get-form "<login_url>:<form_field_names>:<failure_string>:<cookie_string>"
 ```
