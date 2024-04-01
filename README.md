@@ -1,10 +1,13 @@
-# CEH_Practical_Cmds
+# My Quick Command List
+you can modify the commands as per your requirements please observer the command before copy paste as there is explanation after commands in brackets,
+Thank you
 
-My Quick Command List
+
 
 Virtual space inside terminal:
 -------------------------------------
-```python3 -m venv env 
+```
+python3 -m venv env 
 source env/bin/activate
 ```
 
