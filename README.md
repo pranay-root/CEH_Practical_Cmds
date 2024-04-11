@@ -215,7 +215,7 @@ hydra -l <username> -P <passwords_file> <target_url> http-get-form "<login_url>:
 
 wireshark packet filters:
 ------------------------------------------------------------------------------------------
-##Protocol Filters:
+## Protocol Filters:
 ```
 tcp: Filters TCP traffic.
 udp: Filters UDP traffic.
@@ -228,49 +228,49 @@ ftp: Filters FTP traffic.
 ssl: Filters SSL/TLS traffic.
 ssh: Filters SSH traffic.
 ```
-##Address Filters:
+## Address Filters:
 ```
 ip.addr == x.x.x.x: Filters traffic for a specific IP address.
 ip.src == x.x.x.x: Filters traffic with a specific source IP address.
 ip.dst == x.x.x.x: Filters traffic with a specific destination IP address.
 eth.addr == xx:xx:xx:xx:xx:xx: Filters traffic based on MAC address.
 ```
-##Port Filters:
+## Port Filters:
 ```
 tcp.port == xxxx: Filters TCP traffic on a specific port.
 udp.port == xxxx: Filters UDP traffic on a specific port.
 ```
-##Logical Operators:
+## Logical Operators:
 ```
 and: Logical AND operator.
 or: Logical OR operator.
 not: Logical NOT operator.
 ```
-##Comparisons:
+## Comparisons:
 ```
 ==: Equals.
 !=: Not equal.
 >: Greater than.
 <: Less than.
 ```
-##Range Filters:
+## Range Filters:
 ```
 ip.addr in x.x.x.x/y: Filters traffic within a specific IP address range.
 tcp.port in {x, y, z}: Filters traffic on multiple TCP ports.
 udp.port in {x, y, z}: Filters traffic on multiple UDP ports.
 ```
-##Display Filters:
+## Display Filters:
 ```
 frame.number == n: Filters by frame number.
 frame.time_relative > n: Filters by time relative to the start of capture.
 ```
-##HTTP Filters:
+## HTTP Filters:
 ```
 http.request.method == "GET": Filters HTTP GET requests.
 http.response.code == 200: Filters HTTP responses with status code 200.
 http.host == "example.com": Filters HTTP traffic for a specific host.
 ```
-##DNS Filters:
+## DNS Filters:
 ```
 dns.qry.name == "example.com": Filters DNS queries for a specific domain.
 dns.resp.addr == x.x.x.x: Filters DNS responses with a specific IP address.
