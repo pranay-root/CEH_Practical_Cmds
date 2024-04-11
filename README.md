@@ -109,47 +109,47 @@ tar xvf HF2019-Linux.ova #(unziping ova file)
 
 All cmds on extracting and compressig:
 --------------------------------------------------------------------------------------
-# zip
+## zip
 ```
 zip archive.zip file1 file2 directory1
 unzip archive.zip (to extract .zip)
 ```
-# tar compression
+## tar compression
 ```
 tar -cvf archive.tar file1 file2 directory1
 tar -cvzf archive.tar.gz file1 file2 directory1
 tar -cvjf archive.tar.bz2 file1 file2 directory1
 tar -cvJf archive.tar.xz file1 file2 directory1
 ```
-# tar extraction
+## tar extraction
 ```
 tar -xvf archive.tar
 tar -xzvf archive.tar.gz
 tar -xjvf archive.tar.bz2
 tar -xJvf archive.tar.xz
 ```
-# gzip
+## gzip
 ```
 gzip file.txt
 gunzip file.txt.gz (to extract .gz)
 ```
-# bzip2
+## bzip2
 ```
 bzip2 file.txt
 bunzip2 file.txt.bz2 (to extract .bz2)
 ```
-# xz file.txt
+## xz file.txt
 ```
 xz file.txt
 unxz file.txt.xz (to extract .xz)
 ``` 
-# 7z
+## 7z
 ```
 7z a archive.7z file1 file2 directory1
 7za x archive.7z (to extract .7z)
 
 ```
-# rar
+## rar
 ```
 rar a archive.rar file1 file2 directory1
 unrar x archive.rar  (to extract .rar)
