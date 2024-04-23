@@ -26,11 +26,16 @@ Gobuster subdomain Enumeration:
 ```
 gobuster vhost -u example.com -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -t 4 --append-domain
 ```
-
+```
+gobuster dns -d example.com -w /usr/share/seclists/Discovery/DNS/subdomains=top1million-5000.txt -t 10 
+```
 Dirsearch directory find:
 --------------------------------------
 ```
 dirsearch -u http://url.com/ -e*
+```
+```
+gobuster dir -u http://url.com/ -w wordlist -t 10
 ```
 
 Host file direct entry:
