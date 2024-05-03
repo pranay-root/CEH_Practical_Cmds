@@ -81,6 +81,7 @@ sudo ip link set ligolo up
 ./proxy -selfcert (for hacking ctf machines)
 ./proxy -autocert (for real world)
 ./agent -connect 10.10.16.35:11601 -ignore-cert (target machine use this command)
+session (choose session or simply press senter)
 start (use this command in ligolo)
 sudo ip route add 240.0.0.1/32 dev ligolo (to route the local running services to our machine magic ip)
 ```
