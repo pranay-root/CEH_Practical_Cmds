@@ -71,6 +71,7 @@ sudo -l
 cat /etc/crontab
 find / -perm -u=s -type f 2>/dev/null
 netstat -tuln
+getcap -r / 2>/dev/null
 filecap
 
 ```
