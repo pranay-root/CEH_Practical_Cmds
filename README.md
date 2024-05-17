@@ -226,11 +226,20 @@ ifconfig wlan0 192.168.1.7 netmask 255.255.255.0
 
 Hash cracking:
 ----------------------------------------------------------
+## John The Ripper (basic Format)
 ```
-john -w=/usr/share/wordlists/rockyou.txt hash.txt
-hashcat -m 0 hashvalue /usr/share/wordlists/rockyou.txt
-hashcat -a 3 -m <hash_type> <hash_file> ?a?a?a?a?a?a?a?a #(direct bruteforce)
-
+john -w=<wordlist> hash.txt
+john --format=raw-md5 --wordlist=<wordlist> <hash_file>
+john --format=bcrypt --wordlist=<wordlist> <hash_file>
+john --format=raw-sha1 --wordlist=<wordlist> <hash_file>
+john --format=raw-sha256 --wordlist=<wordlist> <hash_file>
+```
+## hashcat (basic format)
+```
+hashcat -m 0 -a 0 <hash_file> <wordlist>  (md5 hashes)
+hashcat -m 3200 -a 0 <hash_file> <wordlist> (bcrypt hashes)
+hashcat -m 100 -a 0 <hash_file> <wordlist> (sha1 hashes)
+hashcat -m 1400 -a 0 <hash_file> <wordlist> (sha 256 hashes)
 ```
 
 FTP server:
