@@ -1,4 +1,4 @@
-# My Quick Command List
+# My Quick Linux Command List
 you can modify the commands as per your requirements please observer the command before copy paste as there is explanation after commands in brackets,
 Thank you
 
