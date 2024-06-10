@@ -221,6 +221,7 @@ Grep filtering commands
 ```
 grep -oP '(?<=^| )([0-9]{1,3}\.){3}[0-9]{1,3}(?= |$)'| sort | uniq  (filter ipaddress)
 grep -Ev '^\s*https?://|.{41,}|^\s*$' | grep -E '[a-z0-9!@#$%^&*()-_=+{};:,.<>?]{5,}:[a-z0-9!@#$%^&*()-_=+{};:,.<>?]{5,}' | grep -v -e 'http://' -e 'https://' (filter credentails)
+grep -ril 'username' /var/www/html (will show the files contains username)
 ```
 
 Manual assigning of ipv4 to wlan0
