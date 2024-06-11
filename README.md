@@ -112,7 +112,13 @@ start (use this command in ligolo)
 sudo ip route add 240.0.0.1/32 dev ligolo (to route the local running services to our machine magic ip)
 ```
 
- 
+Port Forwarding using SSH
+-------------------------------------------------------------------------------------------
+```
+ ssh -L 8888:localhost:8080 rajesh@34.44.2.255 (with password)
+ ssh -i private_key -L 8888:localhost:8080 username@targetip (with private key)
+ (above syntax -L 8888(our machine port):localhost:8080(target machine localhost and ip to forward)
+```
 
 SSH RELATED:
 ------------------------------------------------------------------------------------
