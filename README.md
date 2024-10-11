@@ -262,27 +262,22 @@ ssh2john id_rsa > ssh.hash (for ssh private key passphrases)
 7z2john protected.7z > 7z.hash (for 7z files)
 iphone2john.pl backup > iphone.hash (for iphone encrypted backup files)
 vnc2john vnc_password_file > vnc.hash (for vnc passwords)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```
+to show already cracked hashes
+```
+john --show <hashfile>
+```
+
 ## hashcat (basic format)
 ```
 hashcat -m 0 -a 0 <hash_file> <wordlist>  (md5 hashes)
 hashcat -m 3200 -a 0 <hash_file> <wordlist> (bcrypt hashes)
 hashcat -m 100 -a 0 <hash_file> <wordlist> (sha1 hashes)
 hashcat -m 1400 -a 0 <hash_file> <wordlist> (sha 256 hashes)
+```
+to show already cracked hashes
+```
+hashcat --show <hashfile>
 ```
 
 FTP server:
