@@ -247,6 +247,35 @@ john --format=raw-md5 --wordlist=<wordlist> <hash_file>
 john --format=bcrypt --wordlist=<wordlist> <hash_file>
 john --format=raw-sha1 --wordlist=<wordlist> <hash_file>
 john --format=raw-sha256 --wordlist=<wordlist> <hash_file>
+john --incremental=All <hashfile>
+```
+john hash converting
+```
+zip2john filename.zip > output.hash (for zip files)
+veracrypt2john encrypted_volume.vc > output.hash (for veracrypt files)
+rar2john filename.rar > output.hash (for rar files)
+pdf2john.pl filename.pdf > output.hash (for pdf files)
+office2john filename.docx > output.hash (for Word, Excel, PowerPoint files)
+unshadow /etc/passwd /etc/shadow > combined.hash (for linux password hashes)
+samdump2 SYSTEM SAM > sam.hash (for windows password hashes)
+ssh2john id_rsa > ssh.hash (for ssh private key passphrases)
+7z2john protected.7z > 7z.hash (for 7z files)
+iphone2john.pl backup > iphone.hash (for iphone encrypted backup files)
+vnc2john vnc_password_file > vnc.hash (for vnc passwords)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 ## hashcat (basic format)
 ```
