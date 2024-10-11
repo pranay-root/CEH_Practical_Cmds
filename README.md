@@ -249,7 +249,7 @@ john --format=raw-sha1 --wordlist=<wordlist> <hash_file>
 john --format=raw-sha256 --wordlist=<wordlist> <hash_file>
 john --incremental=All <hashfile>
 ```
-john hash converting
+## john hash converting
 ```
 zip2john filename.zip > output.hash (for zip files)
 veracrypt2john encrypted_volume.vc > output.hash (for veracrypt files)
