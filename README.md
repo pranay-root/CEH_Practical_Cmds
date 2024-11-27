@@ -238,6 +238,17 @@ Manual assigning of ipv4 to wlan0
 ifconfig wlan0 192.168.1.7 netmask 255.255.255.0
 ```
 
+Server Message Block (SMB):
+----------------------------------------------------------
+```
+		smbclient //<server>/<share> -U <username>
+		smbclient -L //<target-ip> -U <username>
+		smbclient //<target-ip>/<share-name> -U <username>
+		smbclient //<target-ip>/<share-name> -U <username> --pwfile=<password-file>
+		smbclient //<target-ip>/share -N
+```
+--------------------------------------------------------------
+
 Hash cracking:
 ----------------------------------------------------------
 ## John The Ripper (basic Format)
