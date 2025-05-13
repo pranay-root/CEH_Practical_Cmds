@@ -285,6 +285,7 @@ hashcat -m 0 -a 0 <hash_file> <wordlist>  (md5 hashes)
 hashcat -m 3200 -a 0 <hash_file> <wordlist> (bcrypt hashes)
 hashcat -m 100 -a 0 <hash_file> <wordlist> (sha1 hashes)
 hashcat -m 1400 -a 0 <hash_file> <wordlist> (sha 256 hashes)
+hashcat -m 0 -a 3 <hash_file> ?/?/?/?/ (for bruteforce)
 ```
 to show already cracked hashes
 ```
