@@ -426,3 +426,9 @@ sqlmap -r request.txt -D dbname -T users -C username,password --dump
 sqlmap -r request.txt --technique=T --dump-all
 sqlmap -r request.txt --technique=T --dump-all --resume
 ```
+Run in powershell to run ollama in 0.0.0.0
+======================================
+```
+$env:OLLAMA_HOST="0.0.0.0:11434"
+ollama serve
+```
