@@ -260,20 +260,28 @@ john --format=bcrypt --wordlist=<wordlist> <hash_file>
 john --format=raw-sha1 --wordlist=<wordlist> <hash_file>
 john --format=raw-sha256 --wordlist=<wordlist> <hash_file>
 john --incremental=All <hashfile>
+john --incremental=Digits hash.txt
+john --incremental=Lower hash.txt
+john --show hash.txt
 ```
 ## john hash converting
 ```
-zip2john filename.zip > output.hash (for zip files)
-veracrypt2john encrypted_volume.vc > output.hash (for veracrypt files)
-rar2john filename.rar > output.hash (for rar files)
-pdf2john.pl filename.pdf > output.hash (for pdf files)
-office2john filename.docx > output.hash (for Word, Excel, PowerPoint files)
-unshadow /etc/passwd /etc/shadow > combined.hash (for linux password hashes)
-samdump2 SYSTEM SAM > sam.hash (for windows password hashes)
-ssh2john id_rsa > ssh.hash (for ssh private key passphrases)
-7z2john protected.7z > 7z.hash (for 7z files)
-iphone2john.pl backup > iphone.hash (for iphone encrypted backup files)
-vnc2john vnc_password_file > vnc.hash (for vnc passwords)
+| File Type               | Convert Command                           | Crack Command   |
+| ----------------------- | ----------------------------------------- | --------------- |
+| ZIP                     | `zip2john file.zip > hash.txt`            | `john hash.txt` |
+| RAR                     | `rar2john file.rar > hash.txt`            | `john hash.txt` |
+| 7z                      | `7z2john.pl file.7z > hash.txt`           | `john hash.txt` |
+| PDF                     | `pdf2john.py file.pdf > hash.txt`         | `john hash.txt` |
+| Office (docx/xlsx/pptx) | `office2john.py file.docx > hash.txt`     | `john hash.txt` |
+| SSH Private Key         | `ssh2john.py id_rsa > hash.txt`           | `john hash.txt` |
+| KeePass                 | `keepass2john file.kdbx > hash.txt`       | `john hash.txt` |
+| Linux passwd/shadow     | `unshadow passwd shadow > hash.txt`       | `john hash.txt` |
+| WPA/WPA2 WiFi           | `hccapx2john file.hccapx > hash.txt`      | `john hash.txt` |
+| TrueCrypt/VeraCrypt     | `truecrypt2john file.tc > hash.txt`       | `john hash.txt` |
+| BitLocker               | `bitlocker2john -i backup.vhd > hash.txt` | `john hash.txt` |
+| DMG                     | `dmg2john file.dmg > hash.txt`            | `john hash.txt` |
+| PKCS12/PFX              | `pfx2john file.pfx > hash.txt`            | `john hash.txt` |
+
 ```
 to show already cracked hashes
 ```
@@ -286,7 +294,8 @@ hashcat -m 0 -a 0 <hash_file> <wordlist>  (md5 hashes)
 hashcat -m 3200 -a 0 <hash_file> <wordlist> (bcrypt hashes)
 hashcat -m 100 -a 0 <hash_file> <wordlist> (sha1 hashes)
 hashcat -m 1400 -a 0 <hash_file> <wordlist> (sha 256 hashes)
-hashcat -m 0 -a 3 <hash_file> ?/?/?/?/ (for bruteforce)
+hashcat -m 0 -a 3 hash.txt ?a?a?a?a (bruteforce)
+hashcat --show hash.txt
 ```
 to show already cracked hashes
 ```
